@@ -26,8 +26,11 @@ jobs:
         run: |
           echo "Images path: ${{ steps.build-root.outputs.images_path }}"
 
-      - uses: actions/upload-artifact@v6
+      - name: 'Tar files'
+        run: tar -cvf my_files.tar .
+
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v4
         with:
           name: my-artifact
-          include-hidden-files: true
-          path: .
+          path: my_files.tar
