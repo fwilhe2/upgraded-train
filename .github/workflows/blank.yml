@@ -1,0 +1,27 @@
+name: buildroot CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      # Use the composite action (if stored in ./.github/actions/buildroot-build in this repo)
+      - name: Build with Buildroot action
+        uses: fwilhe2/buildroot-build/.github/actions/buildroot-build@main
+        with:
+          config: configs/my_custom_defconfig
+          buildroot_ref: "2025.11"
+          jobs: auto
+          upload_artifacts: true
+          artifact_name: "myboard-buildroot-images"
+
+      # If you prefer to access images directly in later steps instead of artifacts,
+      # you can read the action output path:
+      - name: Use images path
+        run: |
+          echo "Images path: ${{ steps.build-root.outputs.images_path }}"
