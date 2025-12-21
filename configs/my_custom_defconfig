@@ -1,0 +1,12 @@
+# Minimal Buildroot defconfig example (x86_64)
+BR2_x86_64=y
+BR2_GENERIC_HOSTNAME="custom-buildroot"
+BR2_ROOTFS_OVERLAY="board/custom/overlay"
+BR2_LINUX_KERNEL=y
+BR2_LINUX_KERNEL_USE_KCONFIG=y
+# Point Buildroot to our kernel fragment(s)
+BR2_LINUX_KERNEL_CUSTOM_CONFIG_FRAGMENT_FILES="board/custom/linux/kernel-fragment.cfg"
+# Keep filesystem small
+BR2_TARGET_ROOTFS_EXT2=y
+BR2_PACKAGE_BUSYBOX=y
+BR2_SYSTEM_DHCP=y
