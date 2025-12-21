@@ -10,9 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      # Use the composite action (if stored in ./.github/actions/buildroot-build in this repo)
       - name: Build with Buildroot action
         uses: fwilhe2/buildroot-build/.github/actions/buildroot-build@main
+        id: build-root
         with:
           config: configs/my_custom_defconfig
           buildroot_ref: "2025.11"
@@ -25,3 +25,9 @@ jobs:
       - name: Use images path
         run: |
           echo "Images path: ${{ steps.build-root.outputs.images_path }}"
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: my-artifact
+          include-hidden-files: true
+          path: .
