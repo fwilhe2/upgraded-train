@@ -4,8 +4,14 @@ BR2_GENERIC_HOSTNAME="custom-buildroot"
 BR2_ROOTFS_OVERLAY="board/custom/overlay"
 BR2_LINUX_KERNEL=y
 BR2_LINUX_KERNEL_USE_KCONFIG=y
-# Point Buildroot to our kernel fragment(s)
+
+# Specify the kernel defconfig to use (required)
+# For x86_64 use "x86_64_defconfig". Replace this with your target's kernel defconfig if different.
+BR2_LINUX_KERNEL_DEFCONFIG="x86_64_defconfig"
+
+# Point Buildroot to our kernel fragment(s); fragments will be merged with the base defconfig
 BR2_LINUX_KERNEL_CUSTOM_CONFIG_FRAGMENT_FILES="board/custom/linux/kernel-fragment.cfg"
+
 # Keep filesystem small
 BR2_TARGET_ROOTFS_EXT2=y
 BR2_PACKAGE_BUSYBOX=y
