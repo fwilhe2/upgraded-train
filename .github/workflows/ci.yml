@@ -19,18 +19,3 @@ jobs:
           jobs: auto
           upload_artifacts: true
           artifact_name: "myboard-buildroot-images"
-
-      # If you prefer to access images directly in later steps instead of artifacts,
-      # you can read the action output path:
-      - name: Use images path
-        run: |
-          echo "Images path: ${{ steps.build-root.outputs.images_path }}"
-
-      - name: 'Tar files'
-        run: tar -cvf my_files.tar .
-
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v4
-        with:
-          name: my-artifact
-          path: my_files.tar
