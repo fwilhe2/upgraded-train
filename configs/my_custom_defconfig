@@ -13,7 +13,6 @@ BR2_LIBC_GLIBC=y
 
 # Target filesystem type
 BR2_TARGET_ROOTFS_EXT2=y
-BR2_TARGET_ROOTFS_EXT2_4=y
 BR2_TARGET_GENERIC_HOSTNAME="buildroot-container-qemu"
 
 # Kernel
@@ -60,7 +59,6 @@ BR2_PACKAGE_STRACE=n
 BR2_PACKAGE_GDB=n
 
 # Filesystem images
-BR2_TARGET_ROOTFS_EXT4=y
 BR2_GENIMAGE=y
 
 # Enable SSH for convenience (can disable for smaller image)
